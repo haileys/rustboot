@@ -29,9 +29,6 @@ loader.bin: loader.asm
 main.bin: linker.ld runtime.o main.o
 	$(LD) -o $@ -T $^
 
-zero.rs:
-	curl -o $@ https://raw.github.com/pcwalton/zero.rs/2858fc99883696cbc42a61f4fb40cdf3e816f102/zero.rs
-
 run: floppy.img
 	$(QEMU) -fda $<
 
