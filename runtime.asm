@@ -21,7 +21,8 @@ start:
     mov al, 1
     rep stosb
     ; jump into rust
-    jmp main
+    call main
+    jmp $
 
 _GLOBAL_OFFSET_TABLE_:
 
