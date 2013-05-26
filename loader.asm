@@ -63,7 +63,6 @@ protected_mode:
     rep stosb
     ; jump into rust
     jmp 0x7e00
-    hlt
 
 gdtr:
     dw (gdt_end - gdt) + 1  ; size

@@ -40,5 +40,4 @@ unsafe fn clear_screen(background: Color) {
 #[no_mangle]
 pub unsafe fn main() {
     clear_screen(LightRed);
-    loop {}
 }
