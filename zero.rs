@@ -43,8 +43,26 @@ pub trait Copy {}
 #[lang="owned"]
 pub trait Owned {}
 
-#[lang="const"]
-pub trait Const {}
+#[lang="freeze"]
+pub trait Freeze {}
+
+#[lang="opaque"]
+pub enum Opaque {}
+
+#[lang="ty_desc"]
+pub struct TyDesc;
+
+#[lang="ty_visitor"]
+pub trait TyVisitor {}
+
+#[lang="closure_exchange_malloc"]
+pub trait ClosureExchangeMalloc {}
+
+#[lang="send"]
+pub trait Send {}
+
+#[lang="sized"]
+pub trait Sized {}
 
 #[lang="drop"]
 pub trait Drop {
