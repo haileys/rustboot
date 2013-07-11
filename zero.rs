@@ -58,6 +58,8 @@ pub trait TyVisitor {}
 #[lang="closure_exchange_malloc"]
 pub trait ClosureExchangeMalloc {}
 
+#[lang="vector_exchange_malloc"]
+
 #[lang="send"]
 pub trait Send {}
 
