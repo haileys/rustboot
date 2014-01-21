@@ -1,3 +1,6 @@
+#[link(name = "rustboot",
+       vers = "0.0",
+       license = "MIT")];
 #[allow(ctypes)];
 #[no_std];
 #[no_core];
