@@ -26,7 +26,7 @@ enum Color {
     White       = 15,
 }
 
-fn range(lo: uint, hi: uint, it: &fn(uint)) {
+fn range(lo: uint, hi: uint, it: |uint| -> ()) {
     let mut iter = lo;
     while iter < hi {
         it(iter);
