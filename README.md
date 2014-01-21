@@ -25,7 +25,7 @@ Install `nasm` and `qemu` from homebrew:
 
 ```bash
 $ brew install nasm
-$ brew install quemu
+$ brew install qemu
 ```
 
 Install binutils from source.
