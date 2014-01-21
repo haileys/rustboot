@@ -15,7 +15,7 @@ You need a few things to run rustboot:
 1. `qemu`
 2. a cross-compiler for i386
 3. `nasm`
-4. Rust's `incoming` branch.
+4. Rust's `master` branch or 0.7 release.
 
 ### OSX
 
@@ -45,7 +45,6 @@ To get edge Rust going, grab it from git:
 ```bash
 $ git clone https://github.com/mozilla/rust
 $ cd rust
-$ git checkout incoming
 $ ./configure --prefix=/Users/steve
 $ make && make install
 ```
