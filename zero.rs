@@ -155,7 +155,6 @@ pub trait Index<Index,Result> {
 // String utilities
 
 #[lang="str_eq"]
-#[fixed_stack_segment]
 pub fn str_eq(a: &str, b: &str) -> bool {
     unsafe {
         let (aptr, alen): (*u8, uint) = transmute(a);
@@ -180,7 +179,6 @@ struct StringRepr {
 
 // FIXME(pcwalton): This function should not be necessary, I don't think.
 #[lang="strdup_uniq"]
-#[fixed_stack_segment]
 pub unsafe fn strdup_uniq(ptr: *u8, len: uint) -> ~str {
     let size = size_of::<StringRepr>() + len + 1;
     let string: *mut StringRepr = transmute(exchange_malloc(transmute(0),
@@ -209,7 +207,6 @@ pub unsafe fn annihilate() {}
 // Failure
 
 #[lang="fail_"]
-#[fixed_stack_segment]
 pub fn fail(_: *i8, _: *i8, _: uint) -> ! {
     unsafe {
         abort()
@@ -217,7 +214,6 @@ pub fn fail(_: *i8, _: *i8, _: uint) -> ! {
 }
 
 #[lang="fail_bounds_check"]
-#[fixed_stack_segment]
 pub fn fail_bounds_check(_: *i8, _: uint, _: uint, _: uint) {
     unsafe {
         abort()
@@ -236,7 +232,6 @@ struct Header {
 
 // FIXME: This is horrendously inefficient.
 #[lang="exchange_malloc"]
-#[fixed_stack_segment]
 pub unsafe fn exchange_malloc(type_desc: *i8, size: uint) -> *i8 {
     let alloc: *mut Header = transmute(malloc(size_of::<Header>() + size));
     (*alloc).minus_one = -1;
@@ -247,7 +242,6 @@ pub unsafe fn exchange_malloc(type_desc: *i8, size: uint) -> *i8 {
 }
 
 #[lang="exchange_free"]
-#[fixed_stack_segment]
 pub unsafe fn exchange_free(alloc: *i8) {
     free(transmute(alloc))
 }
@@ -268,49 +262,41 @@ pub fn start(main: *u8, _: int, _: **i8, _: *u8) -> int {
 // The nonexistent garbage collector
 
 #[lang="malloc"]
-#[fixed_stack_segment]
 pub unsafe fn gc_malloc(_: *i8, _: uint) -> *i8 {
     abort()
 }
 
 #[lang="free"]
-#[fixed_stack_segment]
 pub unsafe fn gc_free(_: *i8) {
     abort()
 }
 
 #[lang="borrow_as_imm"]
-#[fixed_stack_segment]
 pub unsafe fn borrow_as_imm(_: *u8, _: *i8, _: uint) -> uint {
     abort()
 }
 
 #[lang="borrow_as_mut"]
-#[fixed_stack_segment]
 pub unsafe fn borrow_as_mut(_: *u8, _: *i8, _: uint) -> uint {
     abort()
 }
 
 #[lang="record_borrow"]
-#[fixed_stack_segment]
 pub unsafe fn record_borrow(_: *u8, _: uint, _: *i8, _: uint) {
     abort()
 }
 
 #[lang="unrecord_borrow"]
-#[fixed_stack_segment]
 pub unsafe fn unrecord_borrow(_: *u8, _: uint, _: *i8, _: uint) {
     abort()
 }
 
 #[lang="return_to_mut"]
-#[fixed_stack_segment]
 pub unsafe fn return_to_mut(_: *u8, _: uint, _: *i8, _: uint) {
     abort()
 }
 
 #[lang="check_not_borrowed"]
-#[fixed_stack_segment]
 pub unsafe fn check_not_borrowed(_: *u8, _: *i8, _: uint) {
     abort()
 }
@@ -318,15 +304,10 @@ pub unsafe fn check_not_borrowed(_: *u8, _: *i8, _: uint) {
 // libc dependencies
 
 extern {
-    #[fast_ffi]
     pub fn malloc(size: uint) -> *u8;
-    #[fast_ffi]
     pub fn free(ptr: *u8);
-    #[fast_ffi]
     pub fn abort() -> !;
-    #[fast_ffi]
     pub fn memcpy(dest: *mut u8, src: *u8, size: uint) -> *u8;
-    #[fast_ffi]
     pub fn memcmp(a: *u8, b: *u8, size: uint) -> i32;
 }
 
