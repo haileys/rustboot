@@ -1,29 +1,23 @@
-#[link(name = "rustboot",
-       vers = "0.0",
-       license = "MIT")];
-#[allow(ctypes)];
-#[no_std];
-#[no_core];
-
-mod zero;
+#![no_std]
+#![allow(ctypes)]
 
 enum Color {
-    Black       = 0,
-    Blue        = 1,
-    Green       = 2,
-    Cyan        = 3,
-    Red         = 4,
-    Pink        = 5,
-    Brown       = 6,
-    LightGray   = 7,
-    DarkGray    = 8,
-    LightBlue   = 9,
-    LightGreen  = 10,
-    LightCyan   = 11,
-    LightRed    = 12,
-    LightPink   = 13,
-    Yellow      = 14,
-    White       = 15,
+    Black      = 0,
+    Blue       = 1,
+    Green      = 2,
+    Cyan       = 3,
+    Red        = 4,
+    Pink       = 5,
+    Brown      = 6,
+    LightGray  = 7,
+    DarkGray   = 8,
+    LightBlue  = 9,
+    LightGreen = 10,
+    LightCyan  = 11,
+    LightRed   = 12,
+    LightPink  = 13,
+    Yellow     = 14,
+    White      = 15,
 }
 
 fn range(lo: uint, hi: uint, it: |uint| -> ()) {
