@@ -13,12 +13,10 @@ all: floppy.img
 .PHONY: clean run
 
 .rs.o:
-	$(RUSTC) -O --target i386-intel-linux --lib -o $@ -c $<
+	$(RUSTC) -O --target i386-intel-linux --crate-type lib -o $@ --emit obj $<
 
 .asm.o:
 	$(NASM) -f elf32 -o $@ $<
-
-main.rs: zero.rs
 
 floppy.img: loader.bin main.bin
 	cat $^ > $@
