@@ -36,7 +36,7 @@ course.
 
 ```bash
 $ wget 'ftp://sourceware.org/pub/binutils/snapshots/binutils-2.23.52.tar.bz2'
-$ ./configure --target=i386-elf --prefix=/Users/steve
+$ ./configure --target=i386-elf --disable-werror --prefix=/Users/steve
 $ make && make install
 ```
 
