@@ -1,12 +1,6 @@
 use32
 
-global _GLOBAL_OFFSET_TABLE_
 global __morestack
-global abort
-global memcmp
-global memcpy
-global malloc
-global free
 global start
 
 extern main
@@ -24,21 +18,5 @@ start:
     call main
     jmp $
 
-_GLOBAL_OFFSET_TABLE_:
-
 __morestack:
-
-abort:
-    jmp $
-
-memcmp:
-    jmp $
-
-memcpy:
-    jmp $
-
-malloc:
-    jmp $
-
-free:
     jmp $
