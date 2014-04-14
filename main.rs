@@ -35,6 +35,7 @@ unsafe fn clear_screen(background: Color) {
 }
 
 #[no_mangle]
+#[no_split_stack]
 pub unsafe fn main() {
     clear_screen(LightRed);
 }
