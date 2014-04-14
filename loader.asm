@@ -57,7 +57,8 @@ protected_mode:
     mov eax, 0x7bfc
     mov esp, eax
     ; jump into rust
-    jmp 0x7e00
+    call 0x7e00
+    jmp $
 
 gdtr:
     dw (gdt_end - gdt) + 1  ; size

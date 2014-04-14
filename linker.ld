@@ -1,4 +1,4 @@
-ENTRY(start)
+ENTRY(main)
 OUTPUT_FORMAT(binary)
 
 MEMORY {
@@ -9,7 +9,6 @@ SECTIONS {
     . = 0x7e00;
 
     .text : {
-        runtime.o(.text)
         *(.text)
     } >ram
 
