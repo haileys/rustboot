@@ -6,8 +6,6 @@ QEMU=qemu-system-i386
 
 all: floppy.img
 
-.SUFFIXES:
-
 .SUFFIXES: .o .rs .asm
 
 .PHONY: clean run
