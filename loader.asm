@@ -54,7 +54,7 @@ protected_mode:
     mov gs, eax
     mov ss, eax
     ; set up stack
-    mov eax, 0x7bff
+    mov eax, 0x7bfc
     mov esp, eax
     ; jump into rust
     jmp 0x7e00
