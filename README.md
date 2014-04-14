@@ -35,7 +35,9 @@ I use the `--prefix=/Users/steve` option. Put this wherever you want, of
 course.
 
 ```bash
-$ wget 'ftp://sourceware.org/pub/binutils/snapshots/binutils-2.23.52.tar.bz2'
+$ wget http://ftp.gnu.org/gnu/binutils/binutils-2.24.tar.gz
+$ tar xf binutils-2.24.tar.gz
+$ cd binutils-2.24
 $ ./configure --target=i386-elf --disable-werror --prefix=/Users/steve
 $ make && make install
 ```
