@@ -28,14 +28,16 @@ fn range(lo: uint, hi: uint, it: |uint| -> ()) {
     }
 }
 
-unsafe fn clear_screen(background: Color) {
+fn clear_screen(background: Color) {
     range(0, 80*25, |i| {
-        *((0xb8000 + i * 2) as *mut u16) = (background as u16) << 12;
+        unsafe {
+            *((0xb8000 + i * 2) as *mut u16) = (background as u16) << 12;
+        }
     });
 }
 
 #[no_mangle]
 #[no_split_stack]
-pub unsafe fn main() {
+pub fn main() {
     clear_screen(LightRed);
 }
