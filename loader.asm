@@ -56,11 +56,6 @@ protected_mode:
     ; set up stack
     mov eax, 0x7bff
     mov esp, eax
-    ; clear the screen
-    mov edi, 0xb8000
-    mov ecx, 80*25*2
-    mov al, 0
-    rep stosb
     ; jump into rust
     jmp 0x7e00
 
