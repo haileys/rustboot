@@ -28,6 +28,12 @@ $ brew install nasm
 $ brew install qemu
 ```
 
+Make sure the brew version of `nasm` is being used:
+
+```$ nasm -v
+NASM version 2.11.02 compiled on Apr 14 2014
+```
+
 Install binutils from source.
 
 I personally keep things I manually compile limited to my home directory, so
