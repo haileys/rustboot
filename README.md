@@ -30,7 +30,8 @@ $ brew install qemu
 
 Make sure the brew version of `nasm` is being used:
 
-```$ nasm -v
+```bash
+$ nasm -v
 NASM version 2.11.02 compiled on Apr 14 2014
 ```
 
