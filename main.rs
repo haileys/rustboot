@@ -20,20 +20,37 @@ enum Color {
     White      = 15,
 }
 
-fn range(lo: uint, hi: uint, it: |uint| -> ()) {
-    let mut iter = lo;
-    while iter < hi {
-        it(iter);
-        iter += 1;
+enum Option<T> {
+    None,
+    Some(T)
+}
+
+struct IntRange {
+    cur: int,
+    max: int
+}
+
+impl IntRange {
+    fn next(&mut self) -> Option<int> {
+        if self.cur < self.max {
+            self.cur += 1;
+            Some(self.cur - 1)
+        } else {
+            None
+        }
     }
 }
 
+fn range(lo: int, hi: int) -> IntRange {
+    IntRange { cur: lo, max: hi }
+}
+
 fn clear_screen(background: Color) {
-    range(0, 80*25, |i| {
+    for i in range(0, 80 * 25) {
         unsafe {
             *((0xb8000 + i * 2) as *mut u16) = (background as u16) << 12;
         }
-    });
+    }
 }
 
 #[no_mangle]
