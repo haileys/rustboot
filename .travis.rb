@@ -8,7 +8,7 @@ IMG  = ENV["IMG"]  || "floppy.img"
 
 File.delete("x.ppm") if File.exist?("x.ppm")
 
-Timeout.timeout(2) do
+Timeout.timeout(10) do
   server = TCPServer.new(4444)
   qemu = IO.popen([QEMU, "-monitor", "tcp:127.0.0.1:4444", "-nographic", "-fda", IMG], "r+")
   monitor = server.accept
