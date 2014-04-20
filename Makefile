@@ -22,7 +22,7 @@ loader.bin: loader.asm
 	$(NASM) -o $@ -f bin $<
 
 main.bin: linker.ld main.o
-	$(LD) -o $@ -T $^
+	$(LD) -m elf_i386 -o $@ -T $^
 
 run: floppy.img
 	$(QEMU) -fda $<
