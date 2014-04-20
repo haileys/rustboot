@@ -9,7 +9,7 @@ boot:
     mov es, ax
     mov ss, ax
     ; initialize stack
-    mov ax, 0x7bff
+    mov ax, 0x7bfe
     mov sp, ax
     ; load rust code into 0x7e00 so we can jump to it later
     mov ah, 2       ; read
