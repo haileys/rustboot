@@ -22,7 +22,20 @@ Timeout.timeout(20) do
 
   puts monitor.gets
 
-  sleep 15 # wait a few seconds for the VM to boot
+  eip = nil
+  loop do
+    monitor.puts "print $eip"
+    monitor.gets
+    current_eip = monitor.gets
+    puts "EIP is at #{current_eip}"
+    if current_eip == eip
+      puts "Detected halt, screenshotting."
+      break
+    else
+      eip = current_eip
+      sleep 0.1
+    end
+  end
 
   monitor.puts "screendump screen.ppm"
   monitor.gets
