@@ -79,7 +79,7 @@ end
 data.bytes.each_slice(720 * 3).each_with_index do |row, y|
   row.each_slice(3).each_with_index do |pix, x|
     expected_colour =
-      if (0..8).include?(x) && (110..111).include?(y) # cursor
+      if (0..8).include?(x) && (62..63).include?(y) # cursor
         [0, 0, 0]
       else
         [0xff, 0x57, 0x57]
