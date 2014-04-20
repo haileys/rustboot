@@ -9,7 +9,7 @@ IMG  = ENV["IMG"]  || "floppy.img"
 
 File.delete("x.ppm") if File.exist?("x.ppm")
 
-Timeout.timeout(10) do
+Timeout.timeout(20) do
   server = TCPServer.new(4444)
   qemu = IO.popen([
     QEMU,
@@ -22,7 +22,7 @@ Timeout.timeout(10) do
 
   puts monitor.gets
 
-  sleep 5 # wait a few seconds for the VM to boot
+  sleep 15 # wait a few seconds for the VM to boot
 
   monitor.puts "screendump screen.ppm"
   monitor.gets
