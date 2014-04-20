@@ -1,4 +1,3 @@
-CC=i386-elf-gcc
 LD=i386-elf-ld
 RUSTC=rustc
 NASM=nasm
