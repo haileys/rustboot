@@ -6,3 +6,4 @@ install:
 script:
   - sed -i 's/i386-elf-ld/ld/' Makefile
   - make
+  - ruby .travis.rb
