@@ -15,7 +15,7 @@ Timeout.timeout(10) do
 
   puts monitor.gets
 
-  sleep 1 # wait one second for the VM to boot
+  sleep 5 # wait a few seconds for the VM to boot
 
   monitor.puts "screendump screen.ppm"
   monitor.gets
