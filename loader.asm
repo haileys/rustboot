@@ -9,8 +9,7 @@ boot:
     mov es, ax
     mov ss, ax
     ; initialize stack
-    mov ax, 0x7bfe
-    mov sp, ax
+    mov sp, 0x7bfe
     ; load rust code into 0x7e00 so we can jump to it later
     mov ah, 2       ; read
     mov al, 24      ; 24 sectors (12 KiB)
@@ -54,8 +53,7 @@ protected_mode:
     mov gs, eax
     mov ss, eax
     ; set up stack
-    mov eax, 0x7bfc
-    mov esp, eax
+    mov esp, 0x7bfc
     ; jump into rust
     call 0x7e00
     jmp $
