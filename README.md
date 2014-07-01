@@ -8,6 +8,12 @@ It paints the screen bright red and then hangs. That's it:
 
 ![](http://i.imgur.com/NWRehJJ.png)
 
+## Interesting forks
+
+* [jvns/puddle](https://github.com/jvns/puddle)
+
+* [pczarn/rustboot](https://github.com/pczarn/rustboot)
+
 ## Setup
 
 You need a few things to run rustboot:
