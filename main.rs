@@ -1,6 +1,10 @@
 #![no_std]
 #![allow(ctypes)]
 
+#![feature(lang_items)]
+#[lang="sized"]
+trait Sized {}
+
 enum Color {
     Black      = 0,
     Blue       = 1,
@@ -46,9 +50,15 @@ fn range(lo: int, hi: int) -> IntRange {
 }
 
 fn clear_screen(background: Color) {
-    for i in range(0, 80 * 25) {
-        unsafe {
-            *((0xb8000 + i * 2) as *mut u16) = (background as u16) << 12;
+    let mut r = range(0, 80 * 25);
+    loop{
+        match r.next() {
+            Some(x) => {
+                unsafe {
+                    *((0xb8000 + x * 2) as *mut u16) = (background as u16) << 12;
+                }
+            },
+            None =>{break}
         }
     }
 }

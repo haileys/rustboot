@@ -1,4 +1,4 @@
-LD=i386-elf-ld
+LD=ld#i386-elf-ld
 RUSTC=rustc
 NASM=nasm
 QEMU=qemu-system-i386
