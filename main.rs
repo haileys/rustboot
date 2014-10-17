@@ -55,7 +55,7 @@ fn clear_screen(background: Color) {
         match r.next() {
             Some(x) => {
                 unsafe {
-                    *((0xb8000 + x * 2) as *mut u16) = (background as u16) << 12;
+                    *((0xb8000 + x * 2) as *mut u16) = (background as u16) << 12 | 7u16 << 8 | 70 ;
                 }
             },
             None =>{break}
@@ -66,5 +66,5 @@ fn clear_screen(background: Color) {
 #[no_mangle]
 #[no_split_stack]
 pub fn main() {
-    clear_screen(LightRed);
+    clear_screen(Cyan);
 }
