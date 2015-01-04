@@ -8,8 +8,7 @@ trait Sized {}
 #[lang="copy"]
 trait Copy {}
 
-impl Copy for Color {
-}
+impl Copy for Color {}
 
 enum Color {
     Black      = 0,
@@ -56,17 +55,17 @@ fn range(lo: int, hi: int) -> IntRange {
 }
 
 fn clear_screen(background: Color) {
-	let mut r = range(0, 80 * 25);
-	loop {
-		match r.next() {
-			Option::Some(x) => {
-				unsafe {
-					*((0xb8000 + x * 2) as *mut u16) = (background as u16) << 12;
-				}
-			},
-			Option::None =>{break}
-		}
-	}
+    let mut r = range(0, 80 * 25);
+    loop {
+        match r.next() {
+            Option::Some(x) => {
+                unsafe {
+                    *((0xb8000 + x * 2) as *mut u16) = (background as u16) << 12;
+                }
+            },
+            Option::None =>{break}
+        }
+    }
 }
 
 #[no_mangle]
