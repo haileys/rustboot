@@ -1,6 +1,16 @@
 #![no_std]
-#![allow(ctypes)]
+#![allow(improper_ctypes)]
 
+#![feature(lang_items)]
+#[lang="sized"]
+trait Sized {}
+
+#[lang="copy"]
+trait Copy {}
+
+impl Copy for Color {}
+
+#[allow(dead_code)]
 enum Color {
     Black      = 0,
     Blue       = 1,
@@ -26,35 +36,41 @@ enum Option<T> {
 }
 
 struct IntRange {
-    cur: int,
-    max: int
+    cur: isize,
+    max: isize
 }
 
 impl IntRange {
-    fn next(&mut self) -> Option<int> {
+    fn next(&mut self) -> Option<isize> {
         if self.cur < self.max {
             self.cur += 1;
-            Some(self.cur - 1)
+            Option::Some(self.cur - 1)
         } else {
-            None
+            Option::None
         }
     }
 }
 
-fn range(lo: int, hi: int) -> IntRange {
+fn range(lo: isize, hi: isize) -> IntRange {
     IntRange { cur: lo, max: hi }
 }
 
 fn clear_screen(background: Color) {
-    for i in range(0, 80 * 25) {
-        unsafe {
-            *((0xb8000 + i * 2) as *mut u16) = (background as u16) << 12;
+    let mut r = range(0, 80 * 25);
+    loop {
+        match r.next() {
+            Option::Some(x) => {
+                unsafe {
+                    *((0xb8000 + x * 2) as *mut u16) = (background as u16) << 12;
+                }
+            },
+            Option::None =>{break}
         }
     }
 }
 
 #[no_mangle]
-#[no_split_stack]
+#[no_stack_check]
 pub fn main() {
-    clear_screen(LightRed);
+    clear_screen(Color::LightRed);
 }
