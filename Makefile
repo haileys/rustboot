@@ -10,7 +10,7 @@ all: floppy.img
 .PHONY: clean run
 
 .rs.o:
-	$(RUSTC) -O --target i686-unknown-linux-gnu --crate-type lib -o $@ --emit obj $<
+	$(RUSTC) -O --target i686-unknown-linux-gnu --crate-type lib -o $@ --emit obj -C target-cpu=generic $<
 
 .asm.o:
 	$(NASM) -f elf32 -o $@ $<
