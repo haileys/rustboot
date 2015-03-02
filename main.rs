@@ -3,11 +3,15 @@
 #![allow(improper_ctypes)]
 
 #![feature(lang_items)]
+
+#[lang="phantom_fn"]
+trait PhantomFn<A: ?Sized, R: ?Sized = ()> {}
+
 #[lang="sized"]
-trait Sized {}
+trait Sized: PhantomFn<Self> {}
 
 #[lang="copy"]
-trait Copy {}
+trait Copy: PhantomFn<Self> {}
 
 impl Copy for Color {}
 
