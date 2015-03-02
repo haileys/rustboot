@@ -1,3 +1,4 @@
+#![feature(no_std)]
 #![no_std]
 #![allow(improper_ctypes)]
 
