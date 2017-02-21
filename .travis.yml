@@ -1,9 +1,0 @@
-before_install:
-  - yes | sudo add-apt-repository ppa:hansjorg/rust
-  - sudo apt-get update
-install:
-  - sudo apt-get install rust-nightly nasm qemu imagemagick
-script:
-  - sed -i 's/i386-elf-ld/ld/' Makefile
-  - make
-  - ruby .travis.rb
