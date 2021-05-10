@@ -1,4 +1,4 @@
-LD=i386-elf-ld
+LD=ld
 RUSTC=rustc
 NASM=nasm
 QEMU=qemu-system-i386
@@ -10,7 +10,7 @@ all: floppy.img
 .PHONY: clean run
 
 .rs.o:
-	$(RUSTC) -O --target i386-intel-linux --crate-type lib -o $@ --emit obj $<
+	$(RUSTC) -O --target i686-unknown-linux-gnu --crate-type lib -o $@ --emit obj $<
 
 .asm.o:
 	$(NASM) -f elf32 -o $@ $<
